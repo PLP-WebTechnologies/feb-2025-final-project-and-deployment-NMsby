@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Shop All Pet Products - FurryFriendsKE</title>
+        <title>Shop All Pet Products - PetLuxe</title>
         <meta name="description" content="Browse our wide selection of pet supplies including food, toys, accessories and more for all types of pets.">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
@@ -16,7 +16,7 @@
                 <div class="header-content">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="assets/icons/furry-friends-logo.svg" alt="FurryFriendsKE Logo">
+                            <img src="assets/icons/pet-luxe-logo.svg" alt="PetLuxe Logo">
                         </a>
                     </div>
 
@@ -59,17 +59,89 @@
 
         <main>
             <section class="page-header">
-                <h1>All Pet Products</h1>
+                <div class="container">
+                    <h1 id="products-title">All Pet Products</h1>
+                    <p id="products-description">Quality products for all your pet needs</p>
+                </div>
             </section>
 
-            <div class="products-container">
-                <aside class="filters">
-                    <!-- Product filters will go here -->
-                </aside>
+            <div class="container">
+                <div class="products-container">
+                    <aside class="filters">
+                        <div class="filter-group">
+                            <h3>Categories</h3>
+                            <ul class="category-filters">
+                                <li>
+                                    <button class="filter-btn category-btn active" data-category="all">All Products</button>
+                                </li>
+                                <!-- Category buttons will be added with JavaScript -->
+                            </ul>
+                        </div>
 
-                <section class="product-grid">
-                    <!-- Product listing will go here -->
-                </section>
+                        <div class="filter-group">
+                            <h3>Price Range</h3>
+                            <div class="price-slider">
+                                <div class="price-inputs">
+                                    <div class="price-input">
+                                        <label for="min-price">Min</label>
+                                        <div class="input-wrapper">
+                                            <span class="currency">$</span>
+                                            <input type="number" id="min-price" min="0" max="100" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="price-input">
+                                        <label for="max-price">Max</label>
+                                        <div class="input-wrapper">
+                                            <span class="currency">$</span>
+                                            <input type="number" id="max-price" min="0" max="100" value="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="apply-price-filter" class="btn btn-secondary">Apply</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h3>On Sale</h3>
+                            <div class="checkbox-filter">
+                                <input type="checkbox" id="sale-filter" class="filter-checkbox">
+                                <label for="sale-filter">Show Sale Items Only</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group mobile-only">
+                            <button id="clear-filters" class="btn btn-secondary">Clear All Filters</button>
+                        </div>
+                    </aside>
+
+                    <section class="products-section">
+                        <div class="products-header">
+                            <div class="products-count">
+                                <span id="product-count">0</span> products
+                            </div>
+                            <div class="sort-options">
+                                <label for="sort-select">Sort by:</label>
+                                <select id="sort-select">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-asc">Price: Low to High</option>
+                                    <option value="price-desc">Price: High to Low</option>
+                                    <option value="name-asc">Name: A to Z</option>
+                                    <option value="name-desc">Name: Z to A</option>
+                                    <option value="rating-desc">Top Rated</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="product-grid">
+                            <!-- Product cards will be populated with JavaScript -->
+                        </div>
+
+                        <div id="no-products-message" class="hidden">
+                            <p>No products match your current filters. Please try different filter options.</p>
+                            <button id="reset-filters" class="btn btn-primary">Reset Filters</button>
+                        </div>
+                    </section>
+                </div>
             </div>
         </main>
 

@@ -1,11 +1,11 @@
 /**
- * FurryFriendsKE Ecommerce - Main JavaScript
- * Contains global functionality for the FurryFriendsKE website
+ * PetLuxe Ecommerce - Main JavaScript
+ * Contains global functionality for the PetLuxe website
  */
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('FurryFriendsKE website loaded');
+    console.log('PetLuxe website loaded');
 
     // Mobile Navigation Toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');

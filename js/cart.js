@@ -1,5 +1,5 @@
 /**
- * FurryFriendsKE Ecommerce - Cart JavaScript
+ * PetLuxe Ecommerce - Cart JavaScript
  * Contains functionality for shopping cart and checkout
  */
 
