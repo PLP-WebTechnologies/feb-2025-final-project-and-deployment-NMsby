@@ -1,0 +1,27 @@
+/*
+ * FurryFriendsKE Ecommerce - Responsive Styles
+ * Contains all media queries for responsive design
+ */
+
+/* Base Mobile First Approach */
+/* Styles for screens smaller than 576px are in the main stylesheet */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    /* Responsive styles will be added during implementation */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    /* Responsive styles will be added during implementation */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /* Responsive styles will be added during implementation */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Responsive styles will be added during implementation */
+}

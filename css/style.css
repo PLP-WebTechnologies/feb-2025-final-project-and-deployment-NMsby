@@ -1,0 +1,67 @@
+/*
+ * FurryFriendsKE Ecommerce - Main Stylesheet
+ * Contains all styles for the FurryFriendsKE website
+ */
+
+/* Base Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+ul {
+    list-style: none;
+}
+
+button, .btn {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #45a049;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header & Navigation - To be completed in Task 2 */
+
+/* Footer - To be completed in Task 9 */
+
+/* Home Page Styles - To be completed in Task 3 */
+
+/* Products Page Styles - To be completed in Task 4 */
+
+/* Product Detail Styles - To be completed in Task 5 */
+
+/* Cart Styles - To be completed in Task 6 & 7 */
+
+/* About Page Styles - To be completed in Task 8 */

@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Example Product",
+      "category": "example",
+      "price": 19.99,
+      "description": "This is a placeholder product. Real product data will be added in Task 4.",
+      "image": "assets/images/placeholder.jpg",
+      "featured": true,
+      "rating": 4.5,
+      "stock": 10
+    }
+  ],
+  "categories": [
+    {
+      "id": "example",
+      "name": "Example Category",
+      "description": "This is a placeholder category. Real category data will be added in Task 4."
+    }
+  ]
+}
