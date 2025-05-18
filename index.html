@@ -57,24 +57,128 @@
         </header>
 
         <main>
+            <!-- Hero Section with Carousel -->
             <section class="hero">
-                <!-- Hero section with carousel will go here -->
+                <div class="hero-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide active">
+                            <div class="hero-content">
+                                <h1>Welcome to Pet Paradise</h1>
+                                <p>Quality products for your furry, feathery, and scaly friends</p>
+                                <a href="products.html" class="btn btn-primary">Shop Now</a>
+                            </div>
+                            <img src="assets/images/hero-1.jpg" alt="Happy dog with toys" class="hero-image">
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="hero-content">
+                                <h1>Summer Sale</h1>
+                                <p>Up to 30% off on selected pet accessories</p>
+                                <a href="products.html?sale=true" class="btn btn-primary">View Offers</a>
+                            </div>
+                            <img src="assets/images/hero-2.jpg" alt="Cat with pet accessories" class="hero-image">
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="hero-content">
+                                <h1>New Arrivals</h1>
+                                <p>Check out our newest premium pet food options</p>
+                                <a href="products.html?category=food" class="btn btn-primary">Explore</a>
+                            </div>
+                            <img src="assets/images/hero-3.jpg" alt="Premium pet food products" class="hero-image">
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Previous slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Next slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-dots">
+                        <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                        <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+                        <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+<!--                        <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>-->
+<!--                        <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>-->
+                    </div>
+                </div>
             </section>
 
+            <!-- Featured Categories Section -->
             <section class="featured-categories">
-                <!-- Category previews will go here -->
+                <div class="container">
+                    <h2 class="section-title">Shop by Pet</h2>
+                    <div class="category-grid">
+                        <a href="products.html?category=dogs" class="category-card">
+                            <img src="assets/images/category-dogs.jpg" alt="Dog products">
+                            <h3>Dogs</h3>
+                        </a>
+                        <a href="products.html?category=cats" class="category-card">
+                            <img src="assets/images/category-cats.jpg" alt="Cat products">
+                            <h3>Cats</h3>
+                        </a>
+                        <a href="products.html?category=birds" class="category-card">
+                            <img src="assets/images/category-birds.jpg" alt="Bird products">
+                            <h3>Birds</h3>
+                        </a>
+                        <a href="products.html?category=small-pets" class="category-card">
+                            <img src="assets/images/category-small-pets.jpg" alt="Small pet products">
+                            <h3>Small Pets</h3>
+                        </a>
+                    </div>
+                </div>
             </section>
 
+            <!-- Promotional Banner -->
             <section class="promotional-banner">
-                <!-- Promotional content will go here -->
+                <div class="container">
+                    <div class="promo-content">
+                        <h2>Free Shipping on Orders Over $50</h2>
+                        <p>Plus, sign up for our newsletter and get 15% off your first order!</p>
+                        <a href="#newsletter" class="btn btn-secondary">Sign Up Now</a>
+                    </div>
+                </div>
             </section>
 
-            <section class="bestsellers">
-                <!-- Bestselling products will go here -->
+            <!-- Featured Products Section -->
+            <section class="featured-products">
+                <div class="container">
+                    <h2 class="section-title">Bestsellers</h2>
+                    <div class="product-carousel">
+                        <div class="product-carousel-container">
+                            <!-- Product cards will be populated with JavaScript -->
+                        </div>
+                        <button class="carousel-btn prev" aria-label="Previous products">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn next" aria-label="Next products">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </section>
 
-            <section class="newsletter">
-                <!-- Newsletter signup form will go here -->
+            <!-- Newsletter Section -->
+            <section id="newsletter" class="newsletter">
+                <div class="container">
+                    <div class="newsletter-content">
+                        <h2>Join Our Newsletter</h2>
+                        <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                        <form id="newsletter-form" class="newsletter-form">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                            <div class="form-message"></div>
+                        </form>
+                    </div>
+                </div>
             </section>
         </main>
 

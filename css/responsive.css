@@ -6,10 +6,56 @@
 /* Base Mobile First Approach */
 /* Styles for screens smaller than 576px are in the main stylesheet */
 
+/* Newsletter Responsive */
+@media (max-width: 575px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .form-group input {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    .form-group button {
+        width: 100%;
+        border-radius: 4px;
+    }
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .header-content {
         padding: 15px 10px;
+    }
+
+    .product-card {
+        width: 240px;
+    }
+}
+
+/* Hero Section Responsive */
+@media (max-width: 767px) {
+    .carousel-container {
+        height: 500px;
+    }
+
+    .carousel-slide {
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 20px 5%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .hero-image {
+        max-width: 80%;
+        max-height: 50%;
     }
 }
 
@@ -53,6 +99,26 @@
     .mobile-only {
         display: none;
     }
+
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .category-card img {
+        height: 180px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -63,6 +129,18 @@
 
     .logo img {
         height: 45px;
+    }
+
+    .product-carousel {
+        padding: 0 60px;
+    }
+
+    .product-card {
+        width: 260px;
+    }
+
+    .product-card img {
+        height: 200px;
     }
 }
 
