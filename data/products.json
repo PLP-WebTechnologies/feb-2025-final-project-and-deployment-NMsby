@@ -1,0 +1,408 @@
+{
+  "categories": [
+    {
+      "id": "dogs",
+      "name": "Dogs",
+      "description": "Everything your canine companion needs, from food and treats to toys and accessories."
+    },
+    {
+      "id": "cats",
+      "name": "Cats",
+      "description": "Quality products for your feline friends, including food, toys, scratching posts, and grooming supplies."
+    },
+    {
+      "id": "birds",
+      "name": "Birds",
+      "description": "Cages, perches, food, and toys for your feathered companions."
+    },
+    {
+      "id": "small-pets",
+      "name": "Small Pets",
+      "description": "Products for hamsters, guinea pigs, rabbits, and other small animals."
+    },
+    {
+      "id": "fish",
+      "name": "Fish",
+      "description": "Aquariums, filters, food, and decorations for your aquatic pets."
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Premium Dry Dog Food",
+      "category": "dogs",
+      "subcategory": "food",
+      "price": 29.99,
+      "description": "High-quality dog food made with real meat and vegetables. Provides complete nutrition for adult dogs of all breeds.",
+      "details": "Our Premium Dry Dog Food is crafted with care using real chicken as the first ingredient. It contains no artificial preservatives, colors, or flavors. Rich in protein and essential nutrients, this food helps maintain healthy muscles and provides energy for an active lifestyle. Suitable for adult dogs of all breeds and sizes.",
+      "features": [
+        "Real chicken as the first ingredient",
+        "No artificial preservatives or colors",
+        "Rich in protein and essential nutrients",
+        "Supports healthy digestion",
+        "Promotes a shiny coat and healthy skin"
+      ],
+      "specifications": {
+        "Weight": "10 lbs (4.5 kg)",
+        "Suitable for": "Adult dogs of all breeds",
+        "Ingredients": "Chicken, Brown Rice, Peas, Carrots, Flaxseed, Vitamins & Minerals"
+      },
+      "images": [
+        "assets/images/product-dog-food-1.jpg",
+        "assets/images/product-dog-food-2.jpg",
+        "assets/images/product-dog-food-3.jpg"
+      ],
+      "rating": 4.7,
+      "reviews": 124,
+      "stock": 50,
+      "featured": true,
+      "onSale": false
+    },
+    {
+      "id": 2,
+      "name": "Adjustable Dog Collar",
+      "category": "dogs",
+      "subcategory": "accessories",
+      "price": 14.99,
+      "description": "Durable and comfortable nylon collar with secure buckle. Available in multiple sizes and colors.",
+      "details": "Our Adjustable Dog Collar is made from high-quality nylon webbing that stands up to daily use. The secure quick-release buckle makes it easy to put on and take off, while the D-ring provides a secure attachment point for your dog's leash and ID tags. The collar is adjustable to ensure a perfect fit for your furry friend.",
+      "features": [
+        "Durable nylon webbing construction",
+        "Quick-release buckle for safety",
+        "Adjustable for a comfortable fit",
+        "D-ring for ID tags and leash attachment",
+        "Available in multiple colors"
+      ],
+      "specifications": {
+        "Material": "Nylon webbing",
+        "Sizes": "Small (8-12\"), Medium (12-18\"), Large (18-26\")",
+        "Width": "5/8\" (Small), 3/4\" (Medium), 1\" (Large)",
+        "Hardware": "High-quality plastic buckle, metal D-ring"
+      },
+      "images": [
+        "assets/images/product-dog-collar-1.jpg",
+        "assets/images/product-dog-collar-2.jpg"
+      ],
+      "rating": 4.5,
+      "reviews": 86,
+      "stock": 120,
+      "featured": false,
+      "onSale": false
+    },
+    {
+      "id": 3,
+      "name": "Interactive Dog Toy",
+      "category": "dogs",
+      "subcategory": "toys",
+      "price": 19.99,
+      "description": "Engaging toy that dispenses treats as your dog plays. Perfect for mental stimulation and exercise.",
+      "details": "The Interactive Dog Toy is designed to keep your dog mentally stimulated and physically active. As your dog pushes and rolls the toy, it dispenses treats, rewarding them for their play. The adjustable difficulty level allows you to customize the challenge based on your dog's skill level.",
+      "features": [
+        "Dispenses treats during play",
+        "Adjustable difficulty level",
+        "Made from durable, non-toxic materials",
+        "Easy to clean design",
+        "Suitable for dogs of all sizes"
+      ],
+      "specifications": {
+        "Material": "BPA-free plastic",
+        "Dimensions": "4\" x 4\" x 6\"",
+        "Suitable for": "Dogs of all sizes",
+        "Care": "Dishwasher safe (top rack)"
+      },
+      "images": [
+        "assets/images/product-dog-toy-1.jpg",
+        "assets/images/product-dog-toy-2.jpg"
+      ],
+      "rating": 4.8,
+      "reviews": 52,
+      "stock": 75,
+      "featured": true,
+      "onSale": true,
+      "salePrice": 15.99
+    },
+    {
+      "id": 4,
+      "name": "Premium Cat Food",
+      "category": "cats",
+      "subcategory": "food",
+      "price": 24.99,
+      "description": "Nutritionally complete formula for adult cats. Made with real meat and essential nutrients.",
+      "details": "Our Premium Cat Food is formulated to meet the specific nutritional needs of adult cats. Made with real chicken as the first ingredient, it provides the high-quality protein cats need. The balanced blend of vitamins, minerals, and taurine supports overall health, including heart function, vision, and immune system.",
+      "features": [
+        "Real chicken as the first ingredient",
+        "Enriched with taurine for heart and eye health",
+        "Balanced nutrients for overall wellbeing",
+        "No artificial flavors or preservatives",
+        "Promotes healthy digestion"
+      ],
+      "specifications": {
+        "Weight": "7 lbs (3.2 kg)",
+        "Suitable for": "Adult cats",
+        "Ingredients": "Chicken, Brown Rice, Corn, Fish Oil, Taurine, Vitamins & Minerals"
+      },
+      "images": [
+        "assets/images/product-cat-food-1.jpg",
+        "assets/images/product-cat-food-2.jpg"
+      ],
+      "rating": 4.6,
+      "reviews": 93,
+      "stock": 60,
+      "featured": true,
+      "onSale": false
+    },
+    {
+      "id": 5,
+      "name": "Deluxe Cat Scratching Post",
+      "category": "cats",
+      "subcategory": "furniture",
+      "price": 49.99,
+      "description": "Multi-level scratching post with platforms and toys. Perfect for scratching, climbing, and playing.",
+      "details": "The Deluxe Cat Scratching Post gives your feline friend a designated place to exercise their natural scratching instinct, saving your furniture. The sturdy base prevents tipping, while the soft plush covering on the platforms provides a comfortable place for cats to rest. Dangling toys add an element of play to engage your cat's hunting instinct.",
+      "features": [
+        "Multiple sisal-wrapped scratching surfaces",
+        "Plush-covered platforms for lounging",
+        "Dangling toys for play",
+        "Sturdy base for stability",
+        "Easy to assemble"
+      ],
+      "specifications": {
+        "Materials": "Sisal rope, plush fabric, particle board",
+        "Dimensions": "16\" x 16\" x 32\"",
+        "Weight": "12 lbs",
+        "Color": "Beige/Brown"
+      },
+      "images": [
+        "assets/images/product-cat-post-1.jpg",
+        "assets/images/product-cat-post-2.jpg",
+        "assets/images/product-cat-post-3.jpg"
+      ],
+      "rating": 4.4,
+      "reviews": 67,
+      "stock": 25,
+      "featured": true,
+      "onSale": true,
+      "salePrice": 39.99
+    },
+    {
+      "id": 6,
+      "name": "Interactive Cat Toy Set",
+      "category": "cats",
+      "subcategory": "toys",
+      "price": 12.99,
+      "description": "Set of 5 engaging toys including feathers, mice, and balls. Perfect for keeping your cat active and entertained.",
+      "details": "This Interactive Cat Toy Set includes a variety of toys designed to stimulate your cat's natural hunting instincts. The set includes feather teasers, plush mice with catnip, and balls with bells. These toys encourage physical activity, provide mental stimulation, and help prevent boredom.",
+      "features": [
+        "Variety of textures and sounds",
+        "Includes catnip-filled toys",
+        "Encourages exercise and play",
+        "Stimulates hunting instincts",
+        "Durable, cat-safe materials"
+      ],
+      "specifications": {
+        "Contents": "2 feather toys, 2 plush mice, 1 bell ball",
+        "Materials": "Feathers, plush, plastic, catnip",
+        "Suitable for": "Cats and kittens of all ages"
+      },
+      "images": [
+        "assets/images/product-cat-toys-1.jpg",
+        "assets/images/product-cat-toys-2.jpg"
+      ],
+      "rating": 4.3,
+      "reviews": 41,
+      "stock": 100,
+      "featured": false,
+      "onSale": false
+    },
+    {
+      "id": 7,
+      "name": "Large Bird Cage",
+      "category": "birds",
+      "subcategory": "housing",
+      "price": 89.99,
+      "description": "Spacious cage for medium to large birds with multiple perches, feeding stations, and easy-clean design.",
+      "details": "Our Large Bird Cage provides a spacious and comfortable home for your feathered friend. The cage includes multiple perches at different heights, allowing your bird to move around naturally. The slide-out tray makes cleaning easy, while secure locks keep your bird safely inside. The cage comes with feeding cups and a swing for enrichment.",
+      "features": [
+        "Spacious design for comfortable living",
+        "Multiple perches at different heights",
+        "Feeding cups and water dispenser included",
+        "Slide-out tray for easy cleaning",
+        "Secure door locks for safety"
+      ],
+      "specifications": {
+        "Dimensions": "30\" x 20\" x 36\"",
+        "Bar Spacing": "1/2\"",
+        "Material": "Powder-coated steel",
+        "Includes": "2 wooden perches, 2 feeding cups, 1 swing, slide-out tray",
+        "Suitable for": "Cockatiels, conures, small parrots"
+      },
+      "images": [
+        "assets/images/product-bird-cage-1.jpg",
+        "assets/images/product-bird-cage-2.jpg",
+        "assets/images/product-bird-cage-3.jpg"
+      ],
+      "rating": 4.7,
+      "reviews": 38,
+      "stock": 15,
+      "featured": true,
+      "onSale": false
+    },
+    {
+      "id": 8,
+      "name": "Premium Bird Seed Mix",
+      "category": "birds",
+      "subcategory": "food",
+      "price": 15.99,
+      "description": "High-quality seed mix specially formulated for parakeets, cockatiels, and other small birds.",
+      "details": "Our Premium Bird Seed Mix is specially formulated to provide optimal nutrition for small to medium birds. The balanced blend includes a variety of seeds, grains, and dried fruits to ensure your bird receives all the nutrients they need. The resealable bag keeps the seeds fresh longer.",
+      "features": [
+        "Balanced blend of seeds and grains",
+        "Includes dried fruits for variety",
+        "No artificial colors or preservatives",
+        "Enhanced with vitamins and minerals",
+        "Promotes healthy feathers and energy"
+      ],
+      "specifications": {
+        "Weight": "5 lbs (2.3 kg)",
+        "Suitable for": "Parakeets, cockatiels, finches, canaries",
+        "Ingredients": "Millet, sunflower seeds, oats, dried fruits, vitamins & minerals"
+      },
+      "images": [
+        "assets/images/product-bird-seed-1.jpg",
+        "assets/images/product-bird-seed-2.jpg"
+      ],
+      "rating": 4.5,
+      "reviews": 29,
+      "stock": 40,
+      "featured": false,
+      "onSale": true,
+      "salePrice": 12.99
+    },
+    {
+      "id": 9,
+      "name": "Hamster Cage Kit",
+      "category": "small-pets",
+      "subcategory": "housing",
+      "price": 39.99,
+      "description": "Complete habitat for hamsters including cage, wheel, water bottle, and food dish.",
+      "details": "The Hamster Cage Kit provides everything you need to create a comfortable home for your hamster. The spacious cage allows plenty of room for exercise and exploration. The kit includes an exercise wheel, water bottle, food dish, and hideaway, giving your hamster all the essentials for a happy life.",
+      "features": [
+        "Spacious, well-ventilated cage",
+        "Exercise wheel for physical activity",
+        "Hideaway for privacy and security",
+        "Water bottle and food dish included",
+        "Easy-clean design with removable tray"
+      ],
+      "specifications": {
+        "Dimensions": "20\" x 12\" x 14\"",
+        "Material": "Plastic, wire",
+        "Includes": "Cage, exercise wheel, water bottle, food dish, hideaway",
+        "Suitable for": "Hamsters, gerbils, and other small rodents"
+      },
+      "images": [
+        "assets/images/product-hamster-cage-1.jpg",
+        "assets/images/product-hamster-cage-2.jpg"
+      ],
+      "rating": 4.2,
+      "reviews": 36,
+      "stock": 20,
+      "featured": false,
+      "onSale": false
+    },
+    {
+      "id": 10,
+      "name": "Deluxe Hamster Exercise Wheel",
+      "category": "small-pets",
+      "subcategory": "accessories",
+      "price": 11.99,
+      "description": "Silent spinner wheel for hamsters, gerbils, and mice. Provides essential exercise while minimizing noise.",
+      "details": "The Deluxe Hamster Exercise Wheel features a unique design that allows your small pet to run without making the annoying squeaking sounds often associated with exercise wheels. The solid running surface prevents legs from getting caught, making it safer than wire wheels. The wheel attaches securely to the cage for stability during use.",
+      "features": [
+        "Silent operation design",
+        "Solid running surface for safety",
+        "Securely attaches to cage",
+        "Easy to clean surface",
+        "Available in multiple sizes"
+      ],
+      "specifications": {
+        "Diameter": "6.5\" (standard), 8\" (large)",
+        "Material": "BPA-free plastic",
+        "Colors": "Blue, Green, Purple",
+        "Suitable for": "Hamsters, gerbils, mice"
+      },
+      "images": [
+        "assets/images/product-hamster-wheel-1.jpg",
+        "assets/images/product-hamster-wheel-2.jpg"
+      ],
+      "rating": 4.6,
+      "reviews": 47,
+      "stock": 35,
+      "featured": true,
+      "onSale": false
+    },
+    {
+      "id": 11,
+      "name": "20-Gallon Aquarium Kit",
+      "category": "fish",
+      "subcategory": "aquariums",
+      "price": 79.99,
+      "description": "Complete aquarium setup including tank, filter, hood with LED lights, and water conditioner.",
+      "details": "The 20-Gallon Aquarium Kit includes everything you need to start your own underwater world. The clear glass tank provides an excellent view of your fish, while the powerful filtration system keeps the water clean and healthy. The LED hood illuminates your aquarium with energy-efficient lights that showcase your fish and plants.",
+      "features": [
+        "20-gallon glass aquarium",
+        "Three-stage filtration system",
+        "LED lighting in hood",
+        "Water conditioner sample",
+        "Setup guide included"
+      ],
+      "specifications": {
+        "Tank Dimensions": "24\" x 12\" x 16\"",
+        "Tank Material": "Glass",
+        "Filter Type": "Power filter with biological, mechanical, and chemical filtration",
+        "Lighting": "LED in hood",
+        "Suitable for": "Freshwater fish"
+      },
+      "images": [
+        "assets/images/product-aquarium-1.jpg",
+        "assets/images/product-aquarium-2.jpg"
+      ],
+      "rating": 4.3,
+      "reviews": 28,
+      "stock": 10,
+      "featured": false,
+      "onSale": true,
+      "salePrice": 69.99
+    },
+    {
+      "id": 12,
+      "name": "Quality Tropical Fish Food",
+      "category": "fish",
+      "subcategory": "food",
+      "price": 8.99,
+      "description": "Nutritionally complete flake food for tropical freshwater fish. Enhances color and supports health.",
+      "details": "Our Quality Tropical Fish Food provides balanced nutrition for all tropical freshwater fish. The specialized formula enhances the natural colors of your fish while supporting their overall health and vitality. The flakes are designed to float initially, then slowly sink, allowing fish at all levels to feed.",
+      "features": [
+        "Color-enhancing formula",
+        "High-quality protein sources",
+        "Vitamins and minerals for health",
+        "Easily digestible",
+        "Won't cloud water"
+      ],
+      "specifications": {
+        "Weight": "3 oz (85g)",
+        "Type": "Flake food",
+        "Suitable for": "All tropical freshwater fish",
+        "Ingredients": "Fish meal, shrimp meal, wheat flour, algae meal, vitamins & minerals"
+      },
+      "images": [
+        "assets/images/product-fish-food-1.jpg",
+        "assets/images/product-fish-food-2.jpg"
+      ],
+      "rating": 4.4,
+      "reviews": 56,
+      "stock": 80,
+      "featured": false,
+      "onSale": false
+    }
+  ]
+}

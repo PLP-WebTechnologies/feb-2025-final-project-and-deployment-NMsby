@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us - PetLuxe</title>
+        <meta name="description" content="Learn about PetLuxe's mission, our team, and how to contact us for support.">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/icons/pet-luxe-logo.png" alt="PetLuxe Logo">
+                        </a>
+                    </div>
+
+                    <div class="search-bar">
+                        <form id="search-form" class="search-form">
+                            <input type="text" id="search-input" placeholder="Search products..." aria-label="Search products">
+                            <button type="submit" aria-label="Submit search">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </form>
+                        <div id="search-results" class="search-results hidden"></div>
+                    </div>
+
+                    <nav class="main-nav">
+                        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+
+                        <ul class="nav-links">
+                            <li><a href="index.html" class="nav-link">Home</a></li>
+                            <li class="dropdown">
+                                <a href="products.html" class="nav-link">Products</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="products.html?category=dogs">Dogs</a></li>
+                                    <li><a href="products.html?category=cats">Cats</a></li>
+                                    <li><a href="products.html?category=birds">Birds</a></li>
+                                    <li><a href="products.html?category=small-pets">Small Pets</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html" class="nav-link">About Us</a></li>
+                            <li class="mobile-only"><a href="cart.html" class="nav-link">Shopping Cart</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-cart">
+                        <a href="cart.html" class="cart-icon" aria-label="View Shopping Cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="about-page">
+            <section class="page-header">
+                <div class="container">
+                    <h1>About PetLuxe</h1>
+                    <p>Your one-stop destination for all pet needs</p>
+                </div>
+            </section>
+
+            <!-- Our Story Section -->
+            <section class="our-story">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Our Story</h2>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="story-container">
+                        <div class="story-image">
+                            <img src="assets/images/about-store.jpg" alt="PetLuxe store front">
+                        </div>
+
+                        <div class="story-content">
+                            <h3>How it all began</h3>
+                            <p>PetLuxe was founded in 2010 by a group of passionate animal lovers who saw a need for high-quality pet products and exceptional customer service. What started as a small local store has grown into a trusted destination for pet owners across the country.</p>
+
+                            <h3>Our mission</h3>
+                            <p>At PetLuxe, our mission is to enhance the bond between pets and their owners by providing the best products, education, and support. We believe that pets are family members who deserve the highest quality care.</p>
+
+                            <h3>Our commitment</h3>
+                            <ul class="commitment-list">
+                                <li>
+                                    <div class="commitment-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="commitment-text">
+                                        <h4>Quality Products</h4>
+                                        <p>We carefully select products from trusted suppliers who share our values of safety, quality, and sustainability.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="commitment-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 16v-4"></path>
+                                            <path d="M12 8h.01"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="commitment-text">
+                                        <h4>Expert Advice</h4>
+                                        <p>Our team is knowledgeable and passionate about pets, providing helpful guidance to ensure you find the perfect products for your pet's needs.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="commitment-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="commitment-text">
+                                        <h4>Community Support</h4>
+                                        <p>We actively partner with local animal shelters and rescue organizations to support pets in need through donations and awareness campaigns.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Members Section -->
+            <section class="team-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Meet Our Team</h2>
+                        <div class="section-divider"></div>
+                        <p>The passionate pet lovers behind PetLuxe</p>
+                    </div>
+
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="assets/images/team-1.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sarah Johnson</h3>
+                                <p class="member-role">Founder & CEO</p>
+                                <p class="member-bio">A lifelong animal advocate with 15 years of experience in the pet industry. Sarah shares her home with two rescue dogs and a mischievous cat.</p>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="assets/images/team-2.jpg" alt="David Rodriguez">
+                            </div>
+                            <div class="member-info">
+                                <h3>David Rodriguez</h3>
+                                <p class="member-role">Head of Product</p>
+                                <p class="member-bio">With a background in veterinary science, David ensures that all our products meet the highest standards of quality and safety for your pets.</p>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="assets/images/team-3.jpg" alt="Emily Chen">
+                            </div>
+                            <div class="member-info">
+                                    <h3>Emily Chen</h3>
+                                <p class="member-role">Customer Experience</p>
+                                <p class="member-bio">Emily is dedicated to making every interaction with PetLuxe a positive one. She's the proud parent of two rabbits and a parrot.</p>
+                            </div>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="assets/images/team-4.jpg" alt="Michael Thompson">
+                            </div>
+                            <div class="member-info">
+                                <h3>Michael Thompson</h3>
+                                <p class="member-role">Community Outreach</p>
+                                <p class="member-bio">Michael coordinates our partnership programs with local shelters and organizes adoption events. He has fostered over 30 dogs throughout his career.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Store Locations Section -->
+            <section class="locations-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Visit Our Stores</h2>
+                        <div class="section-divider"></div>
+                        <p>Come in and experience PetLuxe in person</p>
+                    </div>
+
+                    <div class="locations-container">
+                        <div class="locations-list">
+                            <div class="location-card">
+                                <h3>Downtown</h3>
+                                <address>
+                                    123 Main Street<br>
+                                    New York, NY 10001
+                                </address>
+                                <p><strong>Hours:</strong> Mon-Sat: 9am-8pm, Sun: 10am-6pm</p>
+                                <p><strong>Phone:</strong> (212) 555–1234</p>
+                                <button class="btn btn-secondary view-map-btn" data-location="downtown">View on Map</button>
+                            </div>
+
+                            <div class="location-card">
+                                <h3>Westside</h3>
+                                <address>
+                                    456 Ocean Avenue<br>
+                                    Los Angeles, CA 90001
+                                </address>
+                                <p><strong>Hours:</strong> Mon-Sat: 9am-9pm, Sun: 10am-7pm</p>
+                                <p><strong>Phone:</strong> (310) 555–5678</p>
+                                <button class="btn btn-secondary view-map-btn" data-location="westside">View on Map</button>
+                            </div>
+
+                            <div class="location-card">
+                                <h3>Lakeview</h3>
+                                <address>
+                                    789 Lake Shore Drive<br>
+                                    Chicago, IL 60601
+                                </address>
+                                <p><strong>Hours:</strong> Mon-Sat: 10am-8pm, Sun: 11am-6pm</p>
+                                <p><strong>Phone:</strong> (312) 555–9012</p>
+                                <button class="btn btn-secondary view-map-btn" data-location="lakeview">View on Map</button>
+                            </div>
+                        </div>
+
+                        <div class="map-container">
+                            <div id="store-map">
+                                <!-- Map will be embedded here -->
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095928044!2d-74.00425872426698!3d40.74076937932795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af44f80211%3A0xeaf7b99128acee3d!2sMadison%20Square%20Park!5e0!3m2!1sen!2sus!4v1690418440409!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Us Section -->
+            <section class="contact-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Contact Us</h2>
+                        <div class="section-divider"></div>
+                        <p>Have a question? We'd love to hear from you!</p>
+                    </div>
+
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div class="method-details">
+                                    <h3>Call Us</h3>
+                                    <p>(800) 555-PETS (7387)</p>
+                                    <p class="text-muted">Mon-Fri: 9am-6pm EST</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="method-details">
+                                    <h3>Email Us</h3>
+                                    <p>support@petluxe.co.ke</p>
+                                    <p class="text-muted">We'll respond within 24 hours</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="method-details">
+                                    <h3>Live Chat</h3>
+                                    <p>Chat with our support team</p>
+                                    <p class="text-muted">Available 7 days a week</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form-container">
+                            <form id="contact-form" class="contact-form">
+                                <div class="form-group">
+                                    <label for="contact-name">Your Name <span class="required">*</span></label>
+                                    <input type="text" id="contact-name" name="name" required>
+                                    <div class="error-message" id="name-error"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="contact-email" name="email" required>
+                                    <div class="error-message" id="email-error"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contact-subject">Subject <span class="required">*</span></label>
+                                    <input type="text" id="contact-subject" name="subject" required>
+                                    <div class="error-message" id="subject-error"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contact-message">Message <span class="required">*</span></label>
+                                    <textarea id="contact-message" name="message" rows="5" required></textarea>
+                                    <div class="error-message" id="message-error"></div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
+
+                                <div id="form-success" class="success-message hidden">
+                                    Thank you for your message! We'll get back to you soon.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-column footer-about">
+                            <div class="footer-logo">
+                                <img src="assets/icons/pet-luxe-logo-white.svg" alt="PetLuxe Logo">
+                            </div>
+                            <p>Your one-stop destination for high-quality pet supplies. We're passionate about pets and committed to providing the best products for your furry, feathery, and scaly friends.</p>
+                            <div class="social-links">
+                                <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-column footer-links">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">Shop All</a></li>
+                                <li><a href="products.html?category=dogs">Dogs</a></li>
+                                <li><a href="products.html?category=cats">Cats</a></li>
+                                <li><a href="products.html?category=birds">Birds</a></li>
+                                <li><a href="products.html?category=small-pets">Small Pets</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column footer-links">
+                            <h3>Customer Service</h3>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                                <li><a href="#">Returns & Refunds</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column footer-newsletter">
+                            <h3>Stay Updated</h3>
+                            <p>Subscribe to our newsletter for pet care tips and exclusive offers.</p>
+                            <form id="footer-newsletter-form" class="footer-newsletter-form">
+                                <div class="form-group">
+                                    <input type="email" id="footer-email" name="email" placeholder="Your email address" required>
+                                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                                </div>
+                                <div class="form-message"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p>&copy; 2025 PetLuxe. All Rights Reserved.</p>
+                    <div class="payment-methods">
+                        <span>We accept:</span>
+                        <img src="assets/icons/payment-methods.svg" alt="Accepted payment methods">
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cookie Consent Banner -->
+        <div id="cookie-consent" class="cookie-consent hidden">
+            <div class="cookie-content">
+                <p>We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.</p>
+                <div class="cookie-buttons">
+                    <button id="cookie-accept" class="btn btn-primary">Accept</button>
+                    <button id="cookie-decline" class="btn btn-secondary">Decline</button>
+                    <a href="#" class="cookie-learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

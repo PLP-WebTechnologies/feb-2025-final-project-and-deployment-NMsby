@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PetLuxe - Your One-Stop Shop for Pet Supplies</title>
+        <meta name="description" content="Find the best products for your pets at PetLuxe. We offer food, toys, accessories, and more for dogs, cats, birds, and small animals.">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/icons/pet-luxe-logo.svg" alt="PetLuxe Logo">
+                        </a>
+                    </div>
+
+                    <div class="search-bar">
+                        <form id="search-form" class="search-form">
+                            <input type="text" id="search-input" placeholder="Search products..." aria-label="Search products">
+                            <button type="submit" aria-label="Submit search">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </form>
+                        <div id="search-results" class="search-results hidden"></div>
+                    </div>
+
+                    <nav class="main-nav">
+                        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+
+                        <ul class="nav-links">
+                            <li><a href="index.html" class="nav-link">Home</a></li>
+                            <li class="dropdown">
+                                <a href="products.html" class="nav-link">Products</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="products.html?category=dogs">Dogs</a></li>
+                                    <li><a href="products.html?category=cats">Cats</a></li>
+                                    <li><a href="products.html?category=birds">Birds</a></li>
+                                    <li><a href="products.html?category=small-pets">Small Pets</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html" class="nav-link">About Us</a></li>
+                            <li class="mobile-only"><a href="cart.html" class="nav-link">Shopping Cart</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-cart">
+                        <a href="cart.html" class="cart-icon" aria-label="View Shopping Cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section with Carousel -->
+            <section class="hero">
+                <div class="hero-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide active">
+                            <div class="hero-content">
+                                <h1>Welcome to PetLuxe</h1>
+                                <p>Quality products for your furry, feathery, and scaly friends</p>
+                                <a href="products.html" class="btn btn-primary">Shop Now</a>
+                            </div>
+                            <img src="assets/images/hero-1.jpg" alt="Happy dog with toys" class="hero-image">
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="hero-content">
+                                <h1>Summer Sale</h1>
+                                <p>Up to 30% off on selected pet accessories</p>
+                                <a href="products.html?sale=true" class="btn btn-primary">View Offers</a>
+                            </div>
+                            <img src="assets/images/hero-2.jpg" alt="Cat with pet accessories" class="hero-image">
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="hero-content">
+                                <h1>New Arrivals</h1>
+                                <p>Check out our newest premium pet food options</p>
+                                <a href="products.html?category=food" class="btn btn-primary">Explore</a>
+                            </div>
+                            <img src="assets/images/hero-3.jpg" alt="Premium pet food products" class="hero-image">
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Previous slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Next slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-dots">
+                        <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                        <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+                        <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+<!--                        <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>-->
+<!--                        <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>-->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Categories Section -->
+            <section class="featured-categories">
+                <div class="container">
+                    <h2 class="section-title">Shop by Pet</h2>
+                    <div class="category-grid">
+                        <a href="products.html?category=dogs" class="category-card">
+                            <img src="assets/images/category-dogs.jpg" alt="Dog products">
+                            <h3>Dogs</h3>
+                        </a>
+                        <a href="products.html?category=cats" class="category-card">
+                            <img src="assets/images/category-cats.jpg" alt="Cat products">
+                            <h3>Cats</h3>
+                        </a>
+                        <a href="products.html?category=birds" class="category-card">
+                            <img src="assets/images/category-birds.jpg" alt="Bird products">
+                            <h3>Birds</h3>
+                        </a>
+                        <a href="products.html?category=small-pets" class="category-card">
+                            <img src="assets/images/category-small-pets.jpg" alt="Small pet products">
+                            <h3>Small Pets</h3>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Promotional Banner -->
+            <section class="promotional-banner">
+                <div class="container">
+                    <div class="promo-content">
+                        <h2>Free Shipping on Orders Over $50</h2>
+                        <p>Plus, sign up for our newsletter and get 15% off your first order!</p>
+                        <a href="#newsletter" class="btn btn-secondary">Sign Up Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products Section -->
+            <section class="featured-products">
+                <div class="container">
+                    <h2 class="section-title">Bestsellers</h2>
+                    <div class="product-carousel">
+                        <div class="product-carousel-container">
+                            <!-- Product cards will be populated with JavaScript -->
+                        </div>
+                        <button class="carousel-btn prev" aria-label="Previous products">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn next" aria-label="Next products">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section id="newsletter" class="newsletter">
+                <div class="container">
+                    <div class="newsletter-content">
+                        <h2>Join Our Newsletter</h2>
+                        <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                        <form id="newsletter-form" class="newsletter-form">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                            <div class="form-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-column footer-about">
+                            <div class="footer-logo">
+                                <img src="assets/icons/pet-luxe-logo-white.svg" alt="PetLuxe Logo">
+                            </div>
+                            <p>Your one-stop destination for high-quality pet supplies. We're passionate about pets and committed to providing the best products for your furry, feathery, and scaly friends.</p>
+                            <div class="social-links">
+                                <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                    </svg>
+                                </a>
+                                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-column footer-links">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">Shop All</a></li>
+                                <li><a href="products.html?category=dogs">Dogs</a></li>
+                                <li><a href="products.html?category=cats">Cats</a></li>
+                                <li><a href="products.html?category=birds">Birds</a></li>
+                                <li><a href="products.html?category=small-pets">Small Pets</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column footer-links">
+                            <h3>Customer Service</h3>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                                <li><a href="#">Returns & Refunds</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column footer-newsletter">
+                            <h3>Stay Updated</h3>
+                            <p>Subscribe to our newsletter for pet care tips and exclusive offers.</p>
+                            <form id="footer-newsletter-form" class="footer-newsletter-form">
+                                <div class="form-group">
+                                    <input type="email" id="footer-email" name="email" placeholder="Your email address" required>
+                                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                                </div>
+                                <div class="form-message"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p>&copy; 2025 PetLuxe. All Rights Reserved.</p>
+                    <div class="payment-methods">
+                        <span>We accept:</span>
+                        <img src="assets/icons/payment-methods.svg" alt="Accepted payment methods">
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cookie Consent Banner -->
+        <div id="cookie-consent" class="cookie-consent hidden">
+            <div class="cookie-content">
+                <p>We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.</p>
+                <div class="cookie-buttons">
+                    <button id="cookie-accept" class="btn btn-primary">Accept</button>
+                    <button id="cookie-decline" class="btn btn-secondary">Decline</button>
+                    <a href="#" class="cookie-learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
