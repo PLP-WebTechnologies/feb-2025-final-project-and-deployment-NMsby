@@ -1210,6 +1210,214 @@ button:hover, .btn:hover {
     display: none;
 }
 
-/* Cart Styles - To be completed in Task 6 & 7 */
+/* Cart Page Styles */
+
+/* Cart Container */
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Empty Cart Message */
+.empty-cart-message {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.empty-cart-icon {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-cart-message h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.empty-cart-message p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Cart Items Section */
+.cart-items {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.cart-header {
+    display: none;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+    color: #666;
+}
+
+.cart-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.cart-item-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cart-item-price {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.cart-item-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-quantity-btn {
+    width: 32px;
+    height: 32px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cart-quantity-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.cart-quantity-input {
+    width: 40px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 5px;
+    font-size: 0.9rem;
+}
+
+.cart-quantity-input::-webkit-inner-spin-button,
+.cart-quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cart-item-total {
+    font-weight: 500;
+    color: #4CAF50;
+}
+
+.cart-item-remove {
+    color: #FF5252;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    padding: 0;
+    margin-left: 10px;
+}
+
+/* Cart Summary Section */
+.cart-summary {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-self: flex-start;
+}
+
+.cart-summary h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.summary-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 15px 0;
+}
+
+.summary-total {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.cart-actions {
+    margin-top: 25px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn-tertiary {
+    background: none;
+    border: none;
+    color: #666;
+    text-decoration: underline;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.btn-tertiary:hover {
+    color: #FF5252;
+}
 
 /* About Page Styles - To be completed in Task 8 */

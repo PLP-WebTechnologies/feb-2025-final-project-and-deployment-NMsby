@@ -57,24 +57,74 @@
             </div>
         </header>
 
-        <main>
-            <section class="page-header">
-                <h1>Your Shopping Cart</h1>
-            </section>
-
-            <div class="cart-container">
-                <section class="cart-items">
-                    <!-- Cart items will go here -->
+        <main class="cart-page">
+            <div class="container">
+                <section class="page-header">
+                    <h1>Your Shopping Cart</h1>
                 </section>
 
-                <section class="order-summary">
-                    <!-- Order totals will go here -->
-                </section>
+                <!-- Empty cart message (initially hidden) -->
+                <div id="empty-cart-message" class="empty-cart-message hidden">
+                    <div class="empty-cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <h2>Your cart is empty</h2>
+                    <p>Looks like you haven't added any items to your cart yet.</p>
+                    <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+
+                <!-- Cart content (initially hidden) -->
+                <div id="cart-content" class="cart-content hidden">
+                    <div class="cart-container">
+                        <section class="cart-items">
+                            <div class="cart-header">
+                                <div class="cart-product-header">Product</div>
+                                <div class="cart-price-header">Price</div>
+                                <div class="cart-quantity-header">Quantity</div>
+                                <div class="cart-total-header">Total</div>
+                                <div class="cart-remove-header"></div>
+                            </div>
+
+                            <div id="cart-items-container" class="cart-items-container">
+                                <!-- Cart items will be added with JavaScript -->
+                            </div>
+                        </section>
+
+                        <section class="cart-summary">
+                            <h2>Order Summary</h2>
+
+                            <div class="summary-item">
+                                <span>Subtotal</span>
+                                <span id="subtotal-amount">$0.00</span>
+                            </div>
+
+                            <div class="summary-item">
+                                <span>Shipping</span>
+                                <span id="shipping-amount">Calculated at checkout</span>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-item summary-total">
+                                <span>Total</span>
+                                <span id="total-amount">$0.00</span>
+                            </div>
+
+                            <div class="cart-actions">
+                                <button id="proceed-checkout-btn" class="btn btn-primary btn-block">Proceed to Checkout</button>
+                                <a href="products.html" class="btn btn-secondary btn-block">Continue Shopping</a>
+                                <button id="clear-cart-btn" class="btn btn-tertiary">Clear Cart</button>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Checkout form will be added in Task 7 -->
+                </div>
             </div>
-
-            <section class="checkout-form">
-                <!-- Checkout form will go here -->
-            </section>
         </main>
 
         <footer>
