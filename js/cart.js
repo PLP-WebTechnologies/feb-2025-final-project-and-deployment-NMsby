@@ -3,6 +3,10 @@
  * Contains functionality for shopping cart and checkout
  */
 
+// Global variables
+let subtotal = 0;
+let shippingCost = 5.99; // Default shipping cost (standard)
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Cart script loaded');
@@ -19,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.cart-page')) {
         console.log('Cart page loaded');
         initializeCartPage();
+        initializeCheckout();
     }
 });
 
@@ -186,8 +191,14 @@ function initializeCartEventListeners() {
 
     // Proceed to checkout button
     document.getElementById('proceed-checkout-btn').addEventListener('click', function() {
-        // This will be implemented in Task 7
-        alert('Checkout functionality will be implemented in the next task.');
+        // Hide cart container
+        document.querySelector('.cart-container').classList.add('hidden');
+
+        // Show checkout form
+        document.getElementById('checkout-form-section').classList.remove('hidden');
+
+        // Initialize checkout form
+        setupCheckoutForm();
     });
 }
 
@@ -392,4 +403,306 @@ function updateCartUI(cart) {
 // Function to calculate cart total
 function calculateCartTotal(cart) {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+// Initialize checkout when the "Proceed to Checkout" button is clicked
+function initializeCheckout() {
+    const proceedCheckoutBtn = document.getElementById('proceed-checkout-btn');
+
+    if (proceedCheckoutBtn) {
+        proceedCheckoutBtn.addEventListener('click', function() {
+            // Hide cart container
+            document.querySelector('.cart-container').classList.add('hidden');
+
+            // Show checkout form
+            document.getElementById('checkout-form-section').classList.remove('hidden');
+
+            // Initialize checkout form
+            setupCheckoutForm();
+        });
+    }
+
+    // Initialize back to cart button
+    const backToCartBtn = document.getElementById('back-to-cart-btn');
+    if (backToCartBtn) {
+        backToCartBtn.addEventListener('click', function() {
+            // Show cart container
+            document.querySelector('.cart-container').classList.remove('hidden');
+
+            // Hide checkout form
+            document.getElementById('checkout-form-section').classList.add('hidden');
+        });
+    }
+}
+
+// Set up the checkout form
+function setupCheckoutForm() {
+    // Get cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Calculate subtotal
+    subtotal = calculateCartTotal(cart);
+
+    // Update order summary
+    updateOrderSummary();
+
+    // Initialize shipping method selection
+    initializeShippingSelection();
+
+    // Initialize form validation
+    initializeFormValidation();
+}
+
+// Update order summary in checkout form
+function updateOrderSummary() {
+    document.getElementById('checkout-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('checkout-shipping').textContent = `$${shippingCost.toFixed(2)}`;
+    document.getElementById('checkout-total').textContent = `$${(subtotal + shippingCost).toFixed(2)}`;
+}
+
+// Initialize shipping method selection
+function initializeShippingSelection() {
+    const shippingOptions = document.querySelectorAll('input[name="shipping"]');
+
+    shippingOptions.forEach(option => {
+        option.addEventListener('change', function() {
+            // Update shipping cost based on selection
+            switch (this.value) {
+                case 'express':
+                    shippingCost = 12.99;
+                    break;
+                case 'overnight':
+                    shippingCost = 19.99;
+                    break;
+                case 'standard':
+                default:
+                    shippingCost = 5.99;
+                    break;
+            }
+
+            // Update order summary
+            updateOrderSummary();
+        });
+    });
+}
+
+// Initialize form validation
+function initializeFormValidation() {
+    const checkoutForm = document.getElementById('checkout-form');
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validate form
+            if (validateCheckoutForm()) {
+                // Process order
+                processOrder();
+            }
+        });
+
+        // Initialize input validation on blur
+        const inputs = checkoutForm.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateInput(this);
+            });
+
+            // Special handling for card fields
+            if (input.id === 'card-number') {
+                input.addEventListener('input', formatCardNumber);
+            } else if (input.id === 'expiry-date') {
+                input.addEventListener('input', formatExpiryDate);
+            } else if (input.id === 'cvv') {
+                input.addEventListener('input', function() {
+                    this.value = this.value.replace(/\D/g, '').substring(0, 4);
+                });
+            }
+        });
+    }
+}
+
+// Validate the entire checkout form
+function validateCheckoutForm() {
+    const checkoutForm = document.getElementById('checkout-form');
+    const inputs = checkoutForm.querySelectorAll('input, select');
+    let isValid = true;
+
+    // Validate each input
+    inputs.forEach(input => {
+        if (!validateInput(input)) {
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+// Validate a single input field
+function validateInput(input) {
+    // Skip optional fields
+    if (!input.required && input.value === '') {
+        return true;
+    }
+
+    const errorElement = document.getElementById(`${input.id}-error`);
+    let isValid;
+    let errorMessage;
+
+    // Validation rules based on input type
+    switch (input.id) {
+        case 'email':
+            isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+            errorMessage = 'Please enter a valid email address';
+            break;
+
+        case 'phone':
+            isValid = /^\d{10,15}$/.test(input.value.replace(/\D/g, ''));
+            errorMessage = 'Please enter a valid phone number';
+            break;
+
+        case 'first-name':
+        case 'last-name':
+        case 'city':
+        case 'name-on-card':
+            isValid = input.value.trim().length > 1;
+            errorMessage = 'This field is required';
+            break;
+
+        case 'address':
+            isValid = input.value.trim().length > 5;
+            errorMessage = 'Please enter a valid address';
+            break;
+
+        case 'zip':
+            isValid = /^\d{5}(-\d{4})?$/.test(input.value) || /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/.test(input.value);
+            errorMessage = 'Please enter a valid ZIP/Postal code';
+            break;
+
+        case 'state':
+        case 'country':
+            isValid = input.value !== '';
+            errorMessage = 'Please select an option';
+            break;
+
+        case 'card-number':
+            isValid = /^\d{4} \d{4} \d{4} \d{4}$/.test(input.value) || /^\d{4} \d{4} \d{4} \d{3}$/.test(input.value);
+            errorMessage = 'Please enter a valid card number';
+            break;
+
+        case 'expiry-date':
+            isValid = /^(0[1-9]|1[0-2])\/\d{2}$/.test(input.value);
+            errorMessage = 'Please enter a valid expiry date (MM/YY)';
+            if (isValid) {
+                // Check that the date is in the future
+                const [month, year] = input.value.split('/');
+                const expiryDate = new Date(2000 + parseInt(year), parseInt(month) - 1);
+                const currentDate = new Date();
+                isValid = expiryDate > currentDate;
+                if (!isValid) {
+                    errorMessage = 'Card has expired';
+                }
+            }
+            break;
+
+        case 'cvv':
+            isValid = /^\d{3,4}$/.test(input.value);
+            errorMessage = 'Please enter a valid CVV';
+            break;
+
+        default:
+            isValid = input.value.trim() !== '';
+            errorMessage = 'This field is required';
+            break;
+    }
+
+    // Update UI based on validation
+    if (!isValid && errorElement) {
+        input.parentElement.classList.add('error');
+        errorElement.textContent = errorMessage;
+    } else if (errorElement) {
+        input.parentElement.classList.remove('error');
+        errorElement.textContent = '';
+    }
+
+    return isValid;
+}
+
+// Format card number as user types
+function formatCardNumber(e) {
+    const target = e.target;
+    let value = target.value.replace(/\D/g, '');
+
+    if (value.length > 16) {
+        value = value.substring(0, 16);
+    }
+
+    // Format with spaces every 4 characters
+    let formattedValue = '';
+    for (let i = 0; i < value.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+            formattedValue += ' ';
+        }
+        formattedValue += value[i];
+    }
+
+    target.value = formattedValue;
+}
+
+// Format expiry date as user types
+function formatExpiryDate(e) {
+    const target = e.target;
+    let value = target.value.replace(/\D/g, '');
+
+    if (value.length > 4) {
+        value = value.substring(0, 4);
+    }
+
+    // Format as MM/YY
+    if (value.length > 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2);
+    }
+
+    target.value = value;
+}
+
+// Process the order
+function processOrder() {
+    // In a real application, this would send data to a server
+    // For this example, we'll simulate order processing
+
+    // Show loading state
+    const submitButton = document.querySelector('.form-actions .btn-primary');
+    submitButton.textContent = 'Processing...';
+    submitButton.disabled = true;
+
+    // Simulate server processing
+    setTimeout(function() {
+        // Generate order number
+        const orderNumber = 'ORD-' + Date.now().toString().substring(5);
+
+        // Get current date
+        const orderDate = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Get customer email
+        const customerEmail = document.getElementById('email').value;
+
+        // Update order confirmation details
+        document.getElementById('order-number').textContent = orderNumber;
+        document.getElementById('order-date').textContent = orderDate;
+        document.getElementById('confirmation-email').textContent = customerEmail;
+
+        // Hide checkout form
+        document.getElementById('checkout-form-section').classList.add('hidden');
+
+        // Show order confirmation
+        document.getElementById('order-confirmation').classList.remove('hidden');
+
+        // Clear cart
+        clearCart();
+    }, 2000);
 }
