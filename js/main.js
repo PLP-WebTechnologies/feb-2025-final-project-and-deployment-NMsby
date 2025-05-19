@@ -7,6 +7,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('PetLuxe website loaded');
 
+    // Initialize responsive testing in development mode
+    initializeResponsiveTesting();
+
     // Mobile Navigation Toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -77,6 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize footer and cross-page components
     initializeFooterNewsletter();
     initializeCookieConsent();
+
+    // Initialize Lazy Loading
+    initializeLazyLoading();
 });
 
 // Function to update cart count
@@ -553,5 +559,97 @@ function initializeCookieConsent() {
             localStorage.setItem('cookieConsent', 'declined');
             cookieConsent.classList.add('hidden');
         });
+    }
+}
+
+// Image Loading Optimization
+// Lazy Load Images
+function initializeLazyLoading() {
+    // Check if the browser supports IntersectionObserver
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // If the image is visible
+                if (entry.isIntersecting) {
+                    const image = entry.target;
+
+                    // Set the src to the data-src (the real image)
+                    if (image.dataset.src) {
+                        image.src = image.dataset.src;
+                        image.removeAttribute('data-src');
+                    }
+
+                    // Stop observing the image
+                    observer.unobserve(image);
+                }
+            });
+        });
+
+        // Get all images with data-src attribute
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(image => {
+            imageObserver.observe(image);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(image => {
+            image.src = image.dataset.src;
+            image.removeAttribute('data-src');
+        });
+    }
+}
+
+// Responsive Layout Testing Function
+function initializeResponsiveTesting() {
+    // Only in development mode - remove this for production
+    const isDevMode = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    if (isDevMode) {
+        // Create responsive testing toolbar
+        const toolbar = document.createElement('div');
+        toolbar.style.position = 'fixed';
+        toolbar.style.bottom = '10px';
+        toolbar.style.right = '10px';
+        toolbar.style.zIndex = '9999';
+        toolbar.style.background = 'rgba(0, 0, 0, 0.7)';
+        toolbar.style.padding = '5px 10px';
+        toolbar.style.borderRadius = '5px';
+        toolbar.style.color = 'white';
+        toolbar.style.fontSize = '12px';
+
+        // Show current viewport size
+        const sizeDisplay = document.createElement('div');
+
+        // Update size display on resize
+        function updateSizeDisplay() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            let breakpoint = '';
+
+            if (width < 576) breakpoint = 'XS';
+            else if (width < 768) breakpoint = 'SM';
+            else if (width < 992) breakpoint = 'MD';
+            else if (width < 1200) breakpoint = 'LG';
+            else breakpoint = 'XL';
+
+            sizeDisplay.textContent = `${width}x${height} (${breakpoint})`;
+        }
+
+        // Initial update
+        updateSizeDisplay();
+
+        // Listen for resize events
+        window.addEventListener('resize', updateSizeDisplay);
+
+        // Add to toolbar
+        toolbar.appendChild(sizeDisplay);
+
+        // Add to body
+        document.body.appendChild(toolbar);
+
+        // Log device-specific info
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Device Pixel Ratio:', window.devicePixelRatio);
     }
 }

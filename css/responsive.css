@@ -8,6 +8,73 @@
 
 /* Newsletter Responsive */
 @media (max-width: 575px) {
+    /* General spacing adjustments */
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Header adjustments */
+    .logo img {
+        height: 35px; /* Slightly smaller logo on very small screens */
+    }
+
+    /* Adjust page headers for smaller screens */
+    .page-header {
+        padding: 30px 0;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Product card adjustments for very small screens */
+    .product-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+    }
+
+    /* Simplify buttons on small screens */
+    .product-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-actions .btn {
+        width: 100%;
+    }
+
+    /* Adjust footer for very small screens */
+    .footer-top {
+        padding: 40px 0 20px;
+    }
+
+    .footer-logo img {
+        height: 35px;
+    }
+
+    /* Cookie consent banner adjustments */
+    .cookie-content {
+        gap: 10px;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+    }
+
+    .cookie-buttons .btn {
+        flex: 1;
+    }
+
+    .cookie-learn-more {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
     .form-group {
         flex-direction: column;
     }
@@ -315,6 +382,11 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
     .nav-links li {
         margin: 0 20px;
     }
@@ -333,6 +405,10 @@
 
     .product-card img {
         height: 200px;
+    }
+
+    .product-detail-grid {
+        gap: 50px;
     }
 
     .product-grid {
@@ -392,6 +468,10 @@
         width: 65%;
     }
 
+    .form-section {
+        padding: 30px;
+    }
+
     .footer-grid {
         grid-template-columns: 2fr 1fr 1fr 2fr;
     }
@@ -403,8 +483,20 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
     .header-content {
         padding: 20px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.3rem;
     }
 
     .logo img {
@@ -415,7 +507,60 @@
         width: 20%;
     }
 
+    .footer-grid {
+        gap: 40px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
     .products-section {
         width: 80%;
+    }
+}
+
+/* Print Styles */
+@media print {
+    /* Hide navigation, footer, and buttons when printing */
+    .site-header,
+    .site-footer,
+    .btn,
+    .cookie-consent {
+        display: none !important;
+    }
+
+    /* Simplify layout for printing */
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Ensure product images print well */
+    .product-image {
+        max-width: 300px;
+    }
+
+    /* Force page breaks before major sections */
+    .page-header {
+        page-break-before: always;
+    }
+
+    /* Prevent page breaks inside product cards */
+    .product-card {
+        page-break-inside: avoid;
+    }
+
+    /* Add visible URLs after links */
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        font-weight: normal;
     }
 }
