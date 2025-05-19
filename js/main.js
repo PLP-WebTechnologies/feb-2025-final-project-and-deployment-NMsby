@@ -3,6 +3,9 @@
  * Contains global functionality for the PetLuxe website
  */
 
+// Global variable to store products data for search
+let searchableProducts = [];
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('PetLuxe website loaded');
@@ -83,7 +86,199 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize Lazy Loading
     initializeLazyLoading();
+
+    // Initialize product search
+    initializeProductSearch();
+
+    // Initialize smooth scrolling
+    initializeSmoothScrolling();
+
+    // Initialize scroll animations
+    initializeScrollAnimations();
+
+    // Add animate-on-scroll class to elements that should animate
+    document.querySelectorAll('.section-header, .product-card, .team-member, .commitment-list li')
+        .forEach(element => {
+            element.classList.add('animate-on-scroll');
+            element.dataset.animation = 'slide-up';
+        });
 });
+
+// Initialize product search functionality
+function initializeProductSearch() {
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    if (!searchForm || !searchInput || !searchResults) return;
+
+    // Fetch products data for search
+    fetchProductsForSearch();
+
+    // Handle search form submission
+    searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const query = searchInput.value.trim();
+        if (query.length < 2) {
+            searchResults.classList.add('hidden');
+            return;
+        }
+
+        performSearch(query);
+    });
+
+    // Handle input changes for live search
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+
+        if (query.length < 2) {
+            searchResults.classList.add('hidden');
+            return;
+        }
+
+        // Add debounce to prevent excessive searches while typing
+        clearTimeout(this.searchTimeout);
+        this.searchTimeout = setTimeout(() => {
+            performSearch(query);
+        }, 300);
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchForm.contains(e.target)) {
+            searchResults.classList.add('hidden');
+        }
+    });
+
+    // Prevent clicks inside search results from closing the dropdown
+    searchResults.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+}
+
+// Fetch products data for search functionality
+function fetchProductsForSearch() {
+    // Show loading state in search input
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.placeholder = 'Loading products...';
+        searchInput.disabled = true;
+    }
+
+    fetch('data/products.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch products data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Store products for search
+            searchableProducts = data.products;
+
+            // Reset search input state
+            if (searchInput) {
+                searchInput.placeholder = 'Search products...';
+                searchInput.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching products for search:', error);
+
+            // Reset search input state with error message
+            if (searchInput) {
+                searchInput.placeholder = 'Search unavailable';
+                searchInput.disabled = true;
+            }
+        });
+}
+
+// Perform product search
+function performSearch(query) {
+    const searchResults = document.getElementById('search-results');
+
+    // Show loading indicator
+    searchResults.innerHTML = `
+        <div class="search-loading">
+            <div class="search-spinner"></div>
+            <span>Searching...</span>
+        </div>
+    `;
+    searchResults.classList.remove('hidden');
+
+    // Simulate search delay (could be a real API call)
+    setTimeout(() => {
+        // Search logic
+        const results = searchableProducts.filter(product => {
+            const nameMatch = product.name.toLowerCase().includes(query.toLowerCase());
+            const categoryMatch = product.category.toLowerCase().includes(query.toLowerCase());
+            const descriptionMatch = product.description.toLowerCase().includes(query.toLowerCase());
+
+            return nameMatch || categoryMatch || descriptionMatch;
+        });
+
+        // Display results
+        displaySearchResults(results, query);
+    }, 500);
+}
+
+// Display search results
+function displaySearchResults(results, query) {
+    const searchResults = document.getElementById('search-results');
+
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">No products found for "${query}"</div>
+        `;
+        return;
+    }
+
+    // Build results HTML
+    let resultsHTML = '';
+
+    // Limit to top 5 results
+    const limitedResults = results.slice(0, 5);
+
+    limitedResults.forEach(product => {
+        // Format price display (regular or sale)
+        let priceHTML;
+        if (product.onSale && product.salePrice) {
+            priceHTML = `
+                <span class="search-result-price">$${product.salePrice.toFixed(2)}</span>
+                <span class="search-result-original-price">$${product.price.toFixed(2)}</span>
+            `;
+        } else {
+            priceHTML = `
+                <span class="search-result-price">$${product.price.toFixed(2)}</span>
+            `;
+        }
+
+        resultsHTML += `
+            <a href="product-detail.html?id=${product.id}" class="search-result-item">
+                <img src="${product.images[0]}" alt="${product.name}" class="search-result-image">
+                <div class="search-result-info">
+                    <div class="search-result-name">${product.name}</div>
+                    <div>${priceHTML}</div>
+                    <div class="search-result-category">${product.category}</div>
+                </div>
+            </a>
+        `;
+    });
+
+    // Add "view all results" link if there are more than 5 results
+    if (results.length > 5) {
+        resultsHTML += `
+            <a href="products.html?search=${encodeURIComponent(query)}" class="search-result-item view-all">
+                <div class="search-result-info">
+                    <div class="search-result-name">View all ${results.length} results</div>
+                </div>
+            </a>
+        `;
+    }
+
+    searchResults.innerHTML = resultsHTML;
+}
 
 // Function to update cart count
 function updateCartCount() {
@@ -625,7 +820,7 @@ function initializeResponsiveTesting() {
         function updateSizeDisplay() {
             const width = window.innerWidth;
             const height = window.innerHeight;
-            let breakpoint = '';
+            let breakpoint;
 
             if (width < 576) breakpoint = 'XS';
             else if (width < 768) breakpoint = 'SM';
@@ -652,4 +847,145 @@ function initializeResponsiveTesting() {
         console.log('User Agent:', navigator.userAgent);
         console.log('Device Pixel Ratio:', window.devicePixelRatio);
     }
+}
+
+// Smooth Scrolling and Animations
+
+// Initialize smooth scrolling for anchor links
+function initializeSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+
+            // Skip if it's just "#" (often used for JavaScript triggers)
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                e.preventDefault();
+
+                // Scroll to the element
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // If it's a tab or accordion, trigger click
+                if (targetElement.classList.contains('tab-btn') ||
+                    targetElement.classList.contains('accordion-btn')) {
+                    targetElement.click();
+                }
+
+                // Update URL without page jump
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+}
+
+// Add scroll animations to elements
+function initializeScrollAnimations() {
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the animation class based on data attribute
+                    const animationType = entry.target.dataset.animation || 'fade-in';
+                    entry.target.classList.add(`animate-${animationType}`);
+
+                    // Stop observing after animation is added
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when at least 10% of the element is visible
+        });
+
+        // Observe each element
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            const animationType = element.dataset.animation || 'fade-in';
+            element.classList.add(`animate-${animationType}`);
+        });
+    }
+}
+
+// Loading Indicators for Async Operations
+
+// Create global loading overlay
+function createLoadingOverlay() {
+    const overlay = document.createElement('div');
+    overlay.className = 'loading-overlay';
+    overlay.innerHTML = `
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading...</div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    return overlay;
+}
+
+// Show global loading overlay
+function showLoading(message = 'Loading...') {
+    // Check if overlay already exists
+    let overlay = document.querySelector('.loading-overlay');
+
+    // Create it if it doesn't exist
+    if (!overlay) {
+        overlay = createLoadingOverlay();
+    }
+
+    // Update message and show
+    overlay.querySelector('.loading-text').textContent = message;
+    overlay.classList.add('active');
+}
+
+// Hide global loading overlay
+function hideLoading() {
+    const overlay = document.querySelector('.loading-overlay');
+
+    if (overlay) {
+        overlay.classList.remove('active');
+    }
+}
+
+// Show loading state on a button
+function buttonLoading(button, isLoading) {
+    if (!button) return;
+
+    if (isLoading) {
+        // Store original text
+        button.dataset.originalText = button.textContent;
+
+        // Replace with loading state
+        button.innerHTML = `<span class="btn-text">${button.textContent}</span>`;
+        button.classList.add('btn-loading');
+        button.disabled = true;
+    } else {
+        // Restore original text
+        button.textContent = button.dataset.originalText || button.querySelector('.btn-text').textContent;
+        button.classList.remove('btn-loading');
+        button.disabled = false;
+    }
+}
+
+// Create inline loading indicator
+function createInlineLoading(message = 'Loading...') {
+    const loading = document.createElement('div');
+    loading.className = 'inline-loading';
+    loading.innerHTML = `
+        <div class="inline-spinner"></div>
+        <span>${message}</span>
+    `;
+
+    return loading;
 }

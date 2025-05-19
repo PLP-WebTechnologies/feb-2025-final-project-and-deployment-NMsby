@@ -42,6 +42,9 @@ function initializeProductsPage() {
 
 // Fetch products data from JSON file
 function fetchProducts() {
+    // Show loading indicator
+    showLoading('Loading products...');
+
     fetch('data/products.json')
         .then(response => {
             if (!response.ok) {
@@ -50,6 +53,9 @@ function fetchProducts() {
             return response.json();
         })
         .then(data => {
+            // Hide loading indicator
+            hideLoading();
+
             allProducts = data.products;
             categories = data.categories;
 
@@ -63,6 +69,9 @@ function fetchProducts() {
             applyFiltersAndSort();
         })
         .catch(error => {
+            // Hide loading indicator
+            hideLoading();
+
             console.error('Error fetching products:', error);
             document.querySelector('.product-grid').innerHTML = `
                 <div class="error-message">
@@ -496,6 +505,9 @@ function initializeProductDetailPage() {
 
 // Fetch product data from JSON file
 function fetchProductData(productId) {
+    // Show loading spinner (already in the HTML)
+    document.getElementById('loading-spinner').classList.remove('hidden');
+
     fetch('data/products.json')
         .then(response => {
             if (!response.ok) {
@@ -632,6 +644,12 @@ function renderProductDetails(product, categories) {
 
     // Initialize add to cart button
     initializeAddToCartButton(product);
+
+    // Add product to recently viewed
+    addToRecentlyViewed(product);
+
+    // Display recently viewed products
+    displayRecentlyViewed(product.id);
 }
 
 // Render product images (main image and thumbnails)
@@ -788,37 +806,44 @@ function initializeAddToCartButton(product) {
 
 // Add product to cart with specified quantity
 function addToCartWithQuantity(product, quantity) {
-    // Get existing cart from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Show loading on add to cart button
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    buttonLoading(addToCartBtn, true);
 
-    // Calculate price (sale price or regular price)
-    const price = product.onSale && product.salePrice ? product.salePrice : product.price;
+    // Simulate network delay (in a real app, this would be an API call)
+    setTimeout(() => {
+        // Get existing cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Check if product already exists in cart
-    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+        // Calculate price (sale price or regular price)
+        const price = product.onSale && product.salePrice ? product.salePrice : product.price;
 
-    if (existingProductIndex !== -1) {
-        // If product exists, update quantity
-        cart[existingProductIndex].quantity += quantity;
-    } else {
-        // If product doesn't exist, add it
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: price,
-            image: product.images[0],
-            quantity: quantity
-        });
-    }
+        // Check if product already exists in cart
+        const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
-    // Save updated cart to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
+        if (existingProductIndex !== -1) {
+            // If product exists, update quantity
+            cart[existingProductIndex].quantity += quantity;
+        } else {
+            // If product doesn't exist, add it
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: price,
+                image: product.images[0],
+                quantity: quantity
+            });
+        }
 
-    // Update cart count
-    updateCartCount();
+        // Save updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Provide user feedback
-    alert(`${quantity} ${quantity === 1 ? 'unit' : 'units'} of "${product.name}" ${quantity === 1 ? 'has' : 'have'} been added to your cart.`);
+        // Update cart count
+        updateCartCount();
+
+        // Provide user feedback
+        alert(`${quantity} ${quantity === 1 ? 'unit' : 'units'} of "${product.name}" ${quantity === 1 ? 'has' : 'have'} been added to your cart.`);
+    }, 800);
 }
 
 // Load related products
@@ -896,4 +921,77 @@ function renderRelatedProducts(products, container) {
             }
         });
     });
+}
+
+// Recently Viewed Products Functionality
+
+// Add current product to recently viewed
+function addToRecentlyViewed(product) {
+    // Get existing recently viewed products from localStorage
+    let recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+    // Check if product already exists in recently viewed
+    const existingIndex = recentlyViewed.findIndex(item => item.id === product.id);
+
+    if (existingIndex !== -1) {
+        // If product exists, remove it (will be added back at the beginning)
+        recentlyViewed.splice(existingIndex, 1);
+    }
+
+    // Add current product to the beginning of the array
+    recentlyViewed.unshift({
+        id: product.id,
+        name: product.name,
+        price: product.onSale && product.salePrice ? product.salePrice : product.price,
+        image: product.images[0],
+        category: product.category
+    });
+
+    // Limit to 10 products
+    if (recentlyViewed.length > 10) {
+        recentlyViewed = recentlyViewed.slice(0, 10);
+    }
+
+    // Save updated recently viewed to localStorage
+    localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
+}
+
+// Display recently viewed products
+function displayRecentlyViewed(currentProductId) {
+    const recentlyViewedSection = document.getElementById('recently-viewed-section');
+    const recentlyViewedContainer = document.getElementById('recently-viewed-container');
+
+    if (!recentlyViewedSection || !recentlyViewedContainer) return;
+
+    // Get recently viewed products from localStorage
+    const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+    // Filter out current product
+    const filteredRecentlyViewed = recentlyViewed.filter(product => product.id !== currentProductId);
+
+    // If there are no other recently viewed products, don't show the section
+    if (filteredRecentlyViewed.length === 0) {
+        recentlyViewedSection.classList.add('hidden');
+        return;
+    }
+
+    // Show the section
+    recentlyViewedSection.classList.remove('hidden');
+
+    // Build HTML for recently viewed products
+    let recentlyViewedHTML = '';
+
+    filteredRecentlyViewed.forEach(product => {
+        recentlyViewedHTML += `
+            <a href="product-detail.html?id=${product.id}" class="recently-viewed-card">
+                <img src="${product.image}" alt="${product.name}">
+                <div class="recently-viewed-card-content">
+                    <h3>${product.name}</h3>
+                    <div class="recently-viewed-price">$${product.price.toFixed(2)}</div>
+                </div>
+            </a>
+        `;
+    });
+
+    recentlyViewedContainer.innerHTML = recentlyViewedHTML;
 }

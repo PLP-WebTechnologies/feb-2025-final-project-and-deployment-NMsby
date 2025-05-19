@@ -144,6 +144,14 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    .search-bar {
+        display: block;
+    }
+
+    .header-content {
+        justify-content: space-between;
+    }
+
     .mobile-menu-toggle {
         display: none;
     }

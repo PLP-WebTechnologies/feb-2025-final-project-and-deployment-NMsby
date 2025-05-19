@@ -222,6 +222,142 @@ button:hover, .btn:hover {
     width: auto;
 }
 
+/* Search Bar Styles */
+.search-bar {
+    position: relative;
+    margin: 0 20px;
+    flex: 1;
+    max-width: 500px;
+    display: none; /* Hidden on mobile by default */
+}
+
+.search-form {
+    display: flex;
+    position: relative;
+}
+
+.search-form input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+}
+
+.search-form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.search-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-form button:hover {
+    color: #4CAF50;
+}
+
+/* Search Results Dropdown */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: #f9f9f9;
+}
+
+.search-result-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.search-result-info {
+    flex: 1;
+}
+
+.search-result-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.search-result-price {
+    color: #4CAF50;
+    font-size: 0.9rem;
+}
+
+.search-result-category {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: capitalize;
+}
+
+.no-results {
+    padding: 15px;
+    text-align: center;
+    color: #666;
+}
+
+.search-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.search-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #4CAF50;
+    border-radius: 50%;
+    animation: search-spin 0.6s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes search-spin {
+    to { transform: rotate(360deg); }
+}
+
 /* Main Navigation */
 .main-nav {
     flex: 1 0 auto;
@@ -1368,6 +1504,80 @@ button:hover, .btn:hover {
     gap: 20px;
 }
 
+/* Recently Viewed Products */
+.recently-viewed-section {
+    margin-top: 60px;
+}
+
+.recently-viewed-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.recently-viewed-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f5f5f5;
+}
+
+.recently-viewed-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.recently-viewed-container::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.recently-viewed-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.recently-viewed-card {
+    flex: 0 0 auto;
+    width: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+.recently-viewed-card:hover {
+    transform: translateY(-5px);
+}
+
+.recently-viewed-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.recently-viewed-card-content {
+    padding: 10px;
+}
+
+.recently-viewed-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recently-viewed-price {
+    font-weight: 600;
+    color: #4CAF50;
+    font-size: 0.9rem;
+}
+
 /* Utilities */
 .hidden {
     display: none;
@@ -2381,4 +2591,128 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading Indicators */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(76, 175, 80, 0.2);
+    border-top-color: #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+.loading-text {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Inline loading indicators */
+.inline-loading {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.inline-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-top-color: #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+/* Loading indicator for buttons */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading .btn-text {
+    visibility: hidden;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
