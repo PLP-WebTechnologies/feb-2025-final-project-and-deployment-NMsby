@@ -73,6 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeStoreLocations();
         initializeContactForm();
     }
+
+    // Initialize footer and cross-page components
+    initializeFooterNewsletter();
+    initializeCookieConsent();
 });
 
 // Function to update cart count
@@ -476,4 +480,78 @@ function submitContactForm() {
             submitButton.textContent = 'Send Message';
         }, 3000);
     }, 1500);
+}
+
+// Footer and Cross-Page Components
+
+// Footer Newsletter Form
+function initializeFooterNewsletter() {
+    const footerNewsletterForm = document.getElementById('footer-newsletter-form');
+
+    if (!footerNewsletterForm) return;
+
+    footerNewsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const emailInput = document.getElementById('footer-email');
+        const messageDiv = footerNewsletterForm.querySelector('.form-message');
+
+        // Simple email validation
+        if (!emailInput.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+            messageDiv.textContent = 'Please enter a valid email address.';
+            messageDiv.style.color = '#FF5252';
+            return;
+        }
+
+        // Simulate form submission
+        emailInput.disabled = true;
+        footerNewsletterForm.querySelector('button').disabled = true;
+        messageDiv.textContent = 'Subscribing...';
+        messageDiv.style.color = '#ccc';
+
+        setTimeout(function() {
+            messageDiv.textContent = 'Thank you for subscribing!';
+            messageDiv.style.color = '#4CAF50';
+
+            // Reset form after delay
+            setTimeout(function() {
+                footerNewsletterForm.reset();
+                emailInput.disabled = false;
+                footerNewsletterForm.querySelector('button').disabled = false;
+            }, 3000);
+        }, 1500);
+    });
+}
+
+// Cookie Consent Banner
+function initializeCookieConsent() {
+    const cookieConsent = document.getElementById('cookie-consent');
+    const acceptButton = document.getElementById('cookie-accept');
+    const declineButton = document.getElementById('cookie-decline');
+
+    // Check if user has already made a choice
+    const consentStatus = localStorage.getItem('cookieConsent');
+
+    if (!consentStatus && cookieConsent) {
+        // Show cookie consent banner after a short delay
+        setTimeout(function() {
+            cookieConsent.classList.remove('hidden');
+        }, 1000);
+    }
+
+    // Accept button
+    if (acceptButton) {
+        acceptButton.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieConsent.classList.add('hidden');
+        });
+    }
+
+    // Decline button
+    if (declineButton) {
+        declineButton.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieConsent.classList.add('hidden');
+        });
+    }
 }

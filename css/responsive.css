@@ -292,6 +292,25 @@
     .contact-form-container {
         width: 60%;
     }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-about {
+        grid-column: span 2;
+    }
+
+    .footer-bottom .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cookie-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -371,6 +390,14 @@
 
     .contact-form-container {
         width: 65%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 2fr;
+    }
+
+    .footer-about {
+        grid-column: span 1;
     }
 }
 
