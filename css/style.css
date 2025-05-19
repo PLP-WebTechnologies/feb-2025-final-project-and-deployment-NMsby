@@ -842,7 +842,373 @@ button:hover, .btn:hover {
     width: 100%;
 }
 
-/* Product Detail Styles - To be completed in Task 5 */
+/* Product Detail Page Styles */
+
+/* Breadcrumb navigation */
+.breadcrumb {
+    margin: 20px 0 30px;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin: 0 10px;
+    color: #ccc;
+}
+
+.breadcrumb a {
+    color: #666;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #4CAF50;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-message {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.error-message p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Product detail container */
+.product-detail-container {
+    margin-bottom: 60px;
+}
+
+.product-detail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Product gallery */
+.product-gallery {
+    width: 100%;
+}
+
+.main-image-container {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.main-image {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.thumbnail.active {
+    border-color: #4CAF50;
+}
+
+/* Product information */
+.product-info {
+    width: 100%;
+}
+
+.product-info h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stars {
+    color: #FFD700;
+}
+
+.reviews-count {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.product-category {
+    color: #666;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.product-price-container {
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.1rem;
+    margin-left: 10px;
+}
+
+.sale-badge {
+    background-color: #FF5252;
+    color: white;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.product-stock {
+    margin-bottom: 20px;
+}
+
+.in-stock {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.low-stock {
+    color: #FFA000;
+    font-weight: 500;
+}
+
+.out-of-stock {
+    color: #FF5252;
+    font-weight: 500;
+}
+
+.product-short-description {
+    margin-bottom: 25px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.product-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Quantity selector */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 100%;
+    background-color: #f5f5f5;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.quantity-input {
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-add-cart {
+    flex: 1;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Product detail tabs */
+.product-tabs {
+    margin-bottom: 40px;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: #4CAF50;
+}
+
+.tab-btn.active {
+    color: #4CAF50;
+    border-bottom-color: #4CAF50;
+}
+
+.tab-content {
+    padding: 10px;
+}
+
+.tab-pane {
+    display: none;
+    line-height: 1.6;
+    color: #666;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.features-list {
+    padding-left: 20px;
+}
+
+.features-list li {
+    margin-bottom: 10px;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.specs-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.specs-table th {
+    text-align: left;
+    padding: 12px 10px;
+    width: 40%;
+    font-weight: 600;
+    color: #333;
+}
+
+.specs-table td {
+    padding: 12px 10px;
+    color: #666;
+}
+
+/* Related products */
+.related-products {
+    margin-top: 60px;
+}
+
+.related-products h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Utilities */
+.hidden {
+    display: none;
+}
 
 /* Cart Styles - To be completed in Task 6 & 7 */
 

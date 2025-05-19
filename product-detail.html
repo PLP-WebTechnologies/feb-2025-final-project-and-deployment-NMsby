@@ -58,22 +58,117 @@
             </div>
         </header>
 
-        <main class="product-detail-container">
-            <section class="product-gallery">
-                <!-- Product images will go here -->
-            </section>
+        <main class="product-detail-page">
+            <div class="container">
+                <!-- Breadcrumb navigation -->
+                <nav class="breadcrumb">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#" id="category-link">Category</a></li>
+                        <li id="product-name">Product Name</li>
+                    </ol>
+                </nav>
 
-            <section class="product-info">
-                <!-- Product details will go here -->
-            </section>
+                <!-- Loading indicator -->
+                <div id="loading-spinner" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading product details...</p>
+                </div>
 
-            <section class="product-description">
-                <!-- Long description will go here -->
-            </section>
+                <!-- Error message (initially hidden) -->
+                <div id="error-message" class="error-message hidden">
+                    <p>Sorry, we couldn't find the product you're looking for.</p>
+                    <a href="products.html" class="btn btn-primary">View All Products</a>
+                </div>
 
-            <section class="related-products">
-                <!-- Related products will go here -->
-            </section>
+                <!-- Product detail container (initially hidden) -->
+                <div id="product-detail-container" class="product-detail-container hidden">
+                    <div class="product-detail-grid">
+                        <!-- Product gallery -->
+                        <section class="product-gallery">
+                            <div class="main-image-container">
+                                <img id="main-image" src="" alt="Product Image" class="main-image">
+                            </div>
+                            <div class="thumbnail-container" id="thumbnail-container">
+                                <!-- Thumbnails will be added with JavaScript -->
+                            </div>
+                        </section>
+
+                        <!-- Product information -->
+                        <section class="product-info">
+                            <h1 id="detail-product-name">Product Name</h1>
+
+                            <div class="product-meta">
+                                <div class="product-rating" id="detail-product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="reviews-count">(0 reviews)</span>
+                                </div>
+                                <div class="product-category" id="detail-product-category">Category</div>
+                            </div>
+
+                            <div class="product-price-container" id="detail-price-container">
+                                <span class="product-price">$0.00</span>
+                            </div>
+
+                            <div class="product-stock" id="detail-product-stock">
+                                <span class="in-stock">In Stock</span>
+                            </div>
+
+                            <div class="product-short-description" id="detail-short-description">
+                                Product short description will appear here.
+                            </div>
+
+                            <div class="product-actions">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn minus-btn" id="minus-btn">-</button>
+                                    <input type="number" id="quantity-input" class="quantity-input" value="1" min="1" max="99">
+                                    <button class="quantity-btn plus-btn" id="plus-btn">+</button>
+                                </div>
+
+                                <button id="add-to-cart-btn" class="btn btn-primary btn-add-cart">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Product details tabs -->
+                    <section class="product-tabs">
+                        <div class="tabs-header">
+                            <button class="tab-btn active" data-tab="description">Description</button>
+                            <button class="tab-btn" data-tab="features">Features</button>
+                            <button class="tab-btn" data-tab="specifications">Specifications</button>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="description-tab">
+                                <p id="detail-long-description">Detailed product description will appear here.</p>
+                            </div>
+
+                            <div class="tab-pane" id="features-tab">
+                                <ul id="detail-features-list" class="features-list">
+                                    <!-- Features will be added with JavaScript -->
+                                </ul>
+                            </div>
+
+                            <div class="tab-pane" id="specifications-tab">
+                                <table class="specs-table" id="detail-specs-table">
+                                    <!-- Specifications will be added with JavaScript -->
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Related products -->
+                    <section class="related-products">
+                        <h2>You May Also Like</h2>
+                        <div class="related-products-grid" id="related-products-container">
+                            <!-- Related products will be added with JavaScript -->
+                        </div>
+                    </section>
+                </div>
+            </div>
         </main>
 
         <footer>

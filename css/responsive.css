@@ -149,6 +149,23 @@
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .product-detail-grid {
+        flex-direction: row;
+        gap: 40px;
+    }
+
+    .product-gallery {
+        width: 55%;
+    }
+
+    .product-info {
+        width: 45%;
+    }
+
+    .related-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -179,6 +196,22 @@
 
     .page-header h1 {
         font-size: 2.5rem;
+    }
+
+    .product-gallery {
+        width: 60%;
+    }
+
+    .product-info {
+        width: 40%;
+    }
+
+    .product-info h1 {
+        font-size: 2rem;
+    }
+
+    .related-products-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
