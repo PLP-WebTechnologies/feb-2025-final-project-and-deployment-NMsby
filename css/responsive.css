@@ -37,6 +37,18 @@
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .locations-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Hero Section Responsive */
@@ -240,6 +252,46 @@
     .order-confirmation {
         padding: 60px 40px;
     }
+
+    .story-container {
+        flex-direction: row;
+    }
+
+    .story-image {
+        width: 40%;
+    }
+
+    .story-content {
+        width: 60%;
+        padding-left: 30px;
+    }
+
+    .locations-container {
+        flex-direction: row;
+    }
+
+    .locations-list {
+        width: 40%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .map-container {
+        width: 60%;
+        height: auto;
+    }
+
+    .contact-container {
+        flex-direction: row;
+    }
+
+    .contact-info {
+        width: 40%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .contact-form-container {
+        width: 60%;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -299,6 +351,26 @@
     .cart-item-image-desktop {
         width: 80px;
         height: 80px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .locations-list {
+        width: 35%;
+    }
+
+    .map-container {
+        width: 65%;
+    }
+
+    .contact-info {
+        width: 35%;
+    }
+
+    .contact-form-container {
+        width: 65%;
     }
 }
 

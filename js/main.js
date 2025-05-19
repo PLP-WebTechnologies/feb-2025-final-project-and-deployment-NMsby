@@ -66,6 +66,13 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFeaturedProducts();
     initNewsletterForm();
     createProductImagePlaceholders();
+
+    // Check if we're on the About page
+    if (document.querySelector('.about-page')) {
+        console.log('About page loaded');
+        initializeStoreLocations();
+        initializeContactForm();
+    }
 });
 
 // Function to update cart count
@@ -310,4 +317,163 @@ function createProductImagePlaceholders() {
     console.log('Product images needed:', productImages);
 }
 
-// Global site functionality will be added as needed
+// About Page Functionality
+
+// Initialize Map and Store Locations
+function initializeStoreLocations() {
+    const mapButtons = document.querySelectorAll('.view-map-btn');
+
+    if (mapButtons.length === 0) return;
+
+    // Store location data (in a real app, this might come from a database)
+    const locations = {
+        downtown: {
+            name: 'Downtown',
+            address: '123 Main Street, New York, NY 10001',
+            mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095928044!2d-74.00425872426698!3d40.74076937932795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af44f80211%3A0xeaf7b99128acee3d!2sMadison%20Square%20Park!5e0!3m2!1sen!2sus!4v1690418440409!5m2!1sen!2sus'
+        },
+        westside: {
+            name: 'Westside',
+            address: '456 Ocean Avenue, Los Angeles, CA 90001',
+            mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.2327593431884!2d-118.2456353242826!3d34.04850788060566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1690418524698!5m2!1sen!2sus'
+        },
+        lakeview: {
+            name: 'Lakeview',
+            address: '789 Lake Shore Drive, Chicago, IL 60601',
+            mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.4839749614863!2d-87.62985612423078!3d41.878768979224744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ca3e2d94695%3A0x4829f3cc9ca2d0de!2sMillennium%20Park!5e0!3m2!1sen!2sus!4v1690418577768!5m2!1sen!2sus'
+        }
+    };
+
+    // Set default map (downtown)
+    const mapContainer = document.getElementById('store-map');
+    if (mapContainer) {
+        mapContainer.innerHTML = `<iframe src="${locations.downtown.mapSrc}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+    }
+
+    // Add click event listeners to map buttons
+    mapButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const locationId = this.getAttribute('data-location');
+            const location = locations[locationId];
+
+            if (location && mapContainer) {
+                // Update map iframe src
+                mapContainer.innerHTML = `<iframe src="${location.mapSrc}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+
+                // Scroll to map if on mobile
+                if (window.innerWidth < 768) {
+                    mapContainer.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+}
+
+// Initialize Contact Form
+function initializeContactForm() {
+    const contactForm = document.getElementById('contact-form');
+
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validate form
+        if (validateContactForm()) {
+            // Simulate form submission (in a real app, this would send data to a server)
+            submitContactForm();
+        }
+    });
+
+    // Add blur event listeners for validation
+    const formInputs = contactForm.querySelectorAll('input, textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateContactInput(this);
+        });
+    });
+}
+
+// Validate contact form
+function validateContactForm() {
+    const form = document.getElementById('contact-form');
+    const inputs = form.querySelectorAll('input, textarea');
+    let isValid = true;
+
+    inputs.forEach(input => {
+        if (!validateContactInput(input)) {
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+// Validate a single contact form input
+function validateContactInput(input) {
+    const errorElement = document.getElementById(`${input.id.replace('contact-', '')}-error`);
+    let isValid = true;
+    let errorMessage = '';
+
+    switch (input.id) {
+        case 'contact-name':
+            isValid = input.value.trim().length >= 2;
+            errorMessage = 'Please enter your name';
+            break;
+
+        case 'contact-email':
+            isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+            errorMessage = 'Please enter a valid email address';
+            break;
+
+        case 'contact-subject':
+            isValid = input.value.trim().length >= 5;
+            errorMessage = 'Please enter a subject';
+            break;
+
+        case 'contact-message':
+            isValid = input.value.trim().length >= 10;
+            errorMessage = 'Please enter a message (at least 10 characters)';
+            break;
+    }
+
+    if (!isValid && errorElement) {
+        input.parentElement.classList.add('error');
+        errorElement.textContent = errorMessage;
+    } else if (errorElement) {
+        input.parentElement.classList.remove('error');
+        errorElement.textContent = '';
+    }
+
+    return isValid;
+}
+
+// Submit contact form (simulation)
+function submitContactForm() {
+    const form = document.getElementById('contact-form');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    // Disable form and show loading state
+    const inputs = form.querySelectorAll('input, textarea, button');
+    inputs.forEach(input => {
+        input.disabled = true;
+    });
+    submitButton.textContent = 'Sending...';
+
+    // Simulate server delay
+    setTimeout(function() {
+        // Show success message
+        document.getElementById('form-success').classList.remove('hidden');
+
+        // Reset form
+        form.reset();
+
+        // Re-enable form after a delay
+        setTimeout(function() {
+            inputs.forEach(input => {
+                input.disabled = false;
+            });
+            submitButton.textContent = 'Send Message';
+        }, 3000);
+    }, 1500);
+}

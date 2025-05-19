@@ -550,7 +550,7 @@ function renderProductDetails(product, categories) {
     document.getElementById('product-detail-container').classList.remove('hidden');
 
     // Update page title
-    document.title = `${product.name} - Pet Paradise`;
+    document.title = `${product.name} - PetLuxe`;
 
     // Update breadcrumb
     const category = categories.find(c => c.id === product.category);
